@@ -7,8 +7,6 @@ import { configureStore, history } from './store/configureStore';
 import Root from './containers/Root';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import 'react-jplayer/src/less/skins/sleek.less';
-import 'react-jplayer/src/less/controls/iconControls.less';
 import './styles/index.scss';
 
 import theme from '!!sass-variable-loader!./styles/theme.scss';
