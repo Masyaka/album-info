@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 
 
-export default class AlbumSearch extends Component {
+export default class AlbumSearch extends PureComponent {
   static propTypes = {
     searchAlbums: PropTypes.func,
   };
