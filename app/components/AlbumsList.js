@@ -35,10 +35,7 @@ export default class AlbumsList extends Component {
                 subtitle={album.description}
                 onClick={() => {
                 }}
-              >
-                {album.placeholder_image_url && <img src={album.placeholder_image_url} alt=""/>}
-                {album.title}
-              </GridTile>
+              />
             );
           })}
         </GridList>
