@@ -27,9 +27,11 @@ export default class AlbumSearch extends Component {
 
   render() {
     return (
-      <div>
+      <form onSubmitCapture={(e) => {
+        e.preventDefault();
+        this.onSearch();
+      }}>
         <TextField
-          fullWidth
           value={this.state.searchString}
           onChange={ e => this.setState({searchString: e.target.value})}
         />
@@ -40,7 +42,7 @@ export default class AlbumSearch extends Component {
             search
           </FontIcon>
         </IconButton>
-      </div>
+      </form>
     );
   }
 }
