@@ -1,7 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import AlbumSearchPage from './pages/AlbumSearchPage';
+
 export default (
-	<Switch>
-	</Switch>
+  <Switch>
+    <Route exact path="/" component={AlbumSearchPage}/>
+  </Switch>
 );
