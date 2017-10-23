@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 import namedSection from '../mixins/namedSection';
 import AlbumSearchContainer from '../containers/AlbumSearchContainer';
