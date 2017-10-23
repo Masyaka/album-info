@@ -15,11 +15,11 @@ export default class AlbumsList extends Component {
     } = this.props;
 
     return (
-      <div style={{width: '400px', margin: '0 auto'}}>
+      <div>
         <GridList
-          cols={1}
+          cols={4}
           cellHeight={150}
-          padding={1}
+          padding={16}
         >
           {albums.map( (album) => {
             return(
@@ -29,7 +29,7 @@ export default class AlbumsList extends Component {
                 actionIcon={<IconButton/>}
                 actionPosition="left"
                 titlePosition="top"
-                titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                titleBackground="black"
                 cols={1}
                 rows={2}
                 subtitle={album.description}

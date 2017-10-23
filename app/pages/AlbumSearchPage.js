@@ -7,7 +7,7 @@ import AlbumSearchResultContainer from '../containers/AlbumSearchResultContainer
 export class AlbumSearchPage extends Component {
   render() {
     return (
-      <div style={{width: '400px', margin: '0 auto'}}>
+      <div className="ph+">
         <AlbumSearchContainer/>
         <AlbumSearchResultContainer/>
       </div>
