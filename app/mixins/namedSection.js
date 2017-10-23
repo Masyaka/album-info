@@ -10,6 +10,11 @@ export default function namedSection(WrappedComponent, sectionName) {
     };
     componentDidMount() {
       this.props.setApplicationHeader(sectionName);
+      try{
+        document.title = sectionName;
+      } catch (e) {
+        console.error(e);
+      }
     }
     componentWillUnmount() {
       this.props.setApplicationHeader('');
