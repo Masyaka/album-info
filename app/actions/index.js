@@ -3,6 +3,8 @@ import { createAction } from 'redux-act';
 import { get } from './fetch';
 
 export const albumSearchSuccess = createAction('albumSearchSuccess');
+export const setApplicationHeader = createAction('setApplicationHeader');
+export const loadStoredAlbums = createAction('loadStoredAlbums');
 
 export function searchAlbums(searchString) {
   return async dispatch => {
@@ -12,5 +14,3 @@ export function searchAlbums(searchString) {
       );
   };
 }
-
-export const setApplicationHeader = createAction('setApplicationHeader');

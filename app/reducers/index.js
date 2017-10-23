@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from 'redux-act';
 
-import { albumSearchSuccess } from '../actions/index';
+import { albumSearchSuccess, loadStoredAlbums, setApplicationHeader } from '../actions/index';
 
 const albumsSearchResult = createReducer({
   [albumSearchSuccess]: (state, payload) => payload
@@ -11,6 +11,16 @@ const albumsSearchResult = createReducer({
   offset: 0,
 });
 
+const storedAlbums = createReducer({
+  [loadStoredAlbums]: (state, payload) => payload
+}, []);
+
+const applicationHeader = createReducer({
+  [setApplicationHeader]: (state, payload) => payload
+}, '');
+
 export default combineReducers({
-  albumsSearchResult
+  albumsSearchResult,
+  storedAlbums,
+  applicationHeader,
 });
