@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import namedSection from '../Mixins/namedSection';
+import namedSection from '../mixins/namedSection';
 import AlbumSearchContainer from '../containers/AlbumSearchContainer';
 import AlbumSearchResultContainer from '../containers/AlbumSearchResultContainer';
 
