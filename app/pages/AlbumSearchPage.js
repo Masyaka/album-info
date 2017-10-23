@@ -4,18 +4,17 @@ import namedSection from '../mixins/namedSection';
 import lss from '../services/localStorageService';
 import AlbumSearchContainer from '../containers/AlbumSearchContainer';
 import AlbumSearchResultContainer from '../containers/AlbumSearchResultContainer';
+import { StoredAlbumsPage } from './StoredAlbumsPage';
 
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 
 export class AlbumSearchPage extends Component {
 
-  static STORED_ALBUMS_KEY = 'storedAlbums';
-
   constructor(props) {
     super(props);
-    if(!lss.get(AlbumSearchPage.STORED_ALBUMS_KEY)) {
-      lss.set(AlbumSearchPage.STORED_ALBUMS_KEY, {});
+    if(!lss.get(StoredAlbumsPage.STORED_ALBUMS_KEY)) {
+      lss.set(StoredAlbumsPage.STORED_ALBUMS_KEY, {});
     }
   }
 
@@ -23,18 +22,38 @@ export class AlbumSearchPage extends Component {
     return (
       <div className="ph+">
         <AlbumSearchContainer/>
-        <AlbumSearchResultContainer
-          getActionIcon={ (album, onActionExecute) => {
-            const storedAlbumsMap = lss.get(AlbumSearchPage.STORED_ALBUMS_KEY);
-            if(storedAlbumsMap[album.id]) {
+        <div className="pt+">
+          <AlbumSearchResultContainer
+            getActionIcon={ (album, onActionExecute) => {
+              const storedAlbumsMap = lss.get(StoredAlbumsPage.STORED_ALBUMS_KEY);
+              if(storedAlbumsMap[album.id]) {
+                return (
+                  <IconButton
+                    onTouchTap={ () => {
+                      const newStoredAlbums = lss.get(StoredAlbumsPage.STORED_ALBUMS_KEY);
+                      delete newStoredAlbums[album.id];
+                      lss.set(
+                        StoredAlbumsPage.STORED_ALBUMS_KEY,
+                        newStoredAlbums
+                      );
+                      onActionExecute();
+                    }}
+                  >
+                    <FontIcon
+                      className="material-icons"
+                      color="white"
+                    >
+                      delete
+                    </FontIcon>
+                  </IconButton>
+                );
+              }
               return (
                 <IconButton
                   onTouchTap={ () => {
-                    const newStoredAlbums = lss.get(AlbumSearchPage.STORED_ALBUMS_KEY);
-                    delete newStoredAlbums[album.id];
                     lss.set(
-                      AlbumSearchPage.STORED_ALBUMS_KEY,
-                      newStoredAlbums
+                      StoredAlbumsPage.STORED_ALBUMS_KEY,
+                      {...lss.get(StoredAlbumsPage.STORED_ALBUMS_KEY), [album.id]: album}
                     );
                     onActionExecute();
                   }}
@@ -43,31 +62,13 @@ export class AlbumSearchPage extends Component {
                     className="material-icons"
                     color="white"
                   >
-                    delete
+                    file_download
                   </FontIcon>
                 </IconButton>
               );
-            }
-            return (
-              <IconButton
-                onTouchTap={ () => {
-                  lss.set(
-                    AlbumSearchPage.STORED_ALBUMS_KEY,
-                    {...lss.get(AlbumSearchPage.STORED_ALBUMS_KEY), [album.id]: album}
-                  );
-                  onActionExecute();
-                }}
-              >
-                <FontIcon
-                  className="material-icons"
-                  color="white"
-                >
-                  file_download
-                </FontIcon>
-              </IconButton>
-            );
-          }}
-        />
+            }}
+          />
+        </div>
       </div>
     );
   }
