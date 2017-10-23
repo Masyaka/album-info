@@ -49,7 +49,8 @@ class ApplicationHeader extends PureComponent {
             docked={false}
             onRequestChange={(open) => this.setState({open})}
           >
-            <Link to="/"><MenuItem onTouchTap={this.toggleOpen}>Index</MenuItem></Link>
+            <Link to="/"><MenuItem onTouchTap={this.toggleOpen}>Search</MenuItem></Link>
+            <Link to="/stored-albums"><MenuItem onTouchTap={this.toggleOpen}>Store</MenuItem></Link>
           </Drawer>
         </div>
       </div>
