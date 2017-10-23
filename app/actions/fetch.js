@@ -15,11 +15,11 @@ export async function fetchData(method, url, body = null, options = {}) {
     body: body && !(isFormData) ? JSON.stringify(body) : body,
   });
 
-  if (response.statusCode[0] === 5) {
+  if (response.status[0] === 5) {
     throw new Error(`Server error ${url}`);
   }
 
-  if (response.statusCode[0] === 4) {
+  if (response.status[0] === 4) {
     const e = new Error(`Bad request error ${url}`);
     e.data = await response.json();
     throw e;
