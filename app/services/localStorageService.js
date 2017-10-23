@@ -12,7 +12,7 @@ export class ConfigurationService {
       this._storedKeys
         .split(',')
         .forEach( k => {
-          this._values[k] = JSON.parse(localStorage.getItem(this._namespacePrefix + k).value);
+          this._values[k] = JSON.parse(localStorage.getItem(this._namespacePrefix + k)).value;
         });
     }
   }
@@ -24,7 +24,7 @@ export class ConfigurationService {
   set(key, value) {
     const targetKey = this._namespacePrefix + key;
     this._values[key] = value;
-    localStorage.setItem(targetKey, JSON.encode({value}));
+    localStorage.setItem(targetKey, JSON.stringify({value: value}));
     localStorage.setItem(this._keysPropertyName, Object.keys(this._values).reduce((a, b) => a + ',' + b));
   }
 
