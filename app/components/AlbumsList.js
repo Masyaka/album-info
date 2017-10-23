@@ -21,8 +21,7 @@ export default class AlbumsList extends Component {
           cellHeight={150}
           padding={1}
         >
-          {albums.map( (kv) => {
-            const album = kv[1];
+          {albums.map( (album) => {
             return(
               <GridTile
                 key={album.id}
